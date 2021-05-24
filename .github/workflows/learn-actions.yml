@@ -27,4 +27,4 @@ jobs:
           tags: rlancer/github-actions-test:latest
       -
         name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ steps.docker_build.outputs }}
