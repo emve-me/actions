@@ -28,3 +28,8 @@ jobs:
       -
         name: Image digest
         run: echo "${{ toJSON(steps) }}"
+    run-on-docker:
+      container: rlancer/github-actions-test:latest
+      steps:
+        - name: Run Python
+          run: python --version
