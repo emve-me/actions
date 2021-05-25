@@ -24,6 +24,7 @@ jobs:
         run: echo "${{ toJSON(steps) }}"
 
   run-on-docker:
+    needs: [docker]
     runs-on: ubuntu-latest
     container: rlancer/github-actions-test:latest
     steps:
