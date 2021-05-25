@@ -19,9 +19,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: rlancer/github-actions-test:latest
-      - name: Image digest
-        run: echo "${{ toJSON(steps) }}"
+          tags:
+            - rlancer/github-actions-test:latest
+            - rlancer/github-actions-test:anewtag
 
   run-on-docker:
     needs: [docker]
