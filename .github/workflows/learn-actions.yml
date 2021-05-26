@@ -1,9 +1,7 @@
 name: learn-github-actions
 on: [ push ]
 
-
 jobs:
-
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +19,9 @@ jobs:
         id: generate-docker-tag-test
         uses: actions/github-script@v4
         with:
-          script: console.log(context)
+          script: console.log(process.env)
+        env:
+          - HEY=Yo
 
 
       - name: Generate Docker Tag
