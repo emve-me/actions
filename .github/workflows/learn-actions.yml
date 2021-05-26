@@ -21,7 +21,7 @@ jobs:
         with:
           script: |
             const tagBase = `${process.env['DOCKER_USERNAME']}/${context.repo.repo}`
-            cont tags =  [`${tagBase}:${context.sha.substring(0, 7)}`, `${tagBase}:latest`]
+            const tags =  [`${tagBase}:${context.sha.substring(0, 7)}`, `${tagBase}:latest`]
             console.log(tags)
             return tags
         env:
