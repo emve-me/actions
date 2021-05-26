@@ -22,7 +22,8 @@ jobs:
           script: |
             const tagBase = `${process.env['DOCKER_USERNAME']}/${context.repo.repo}`
             const tags =  [`${tagBase}:${context.sha.substring(0, 7)}`, `${tagBase}:latest`]
-            return tags
+            return tags.join(',')
+          result-encoding: string
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
