@@ -37,7 +37,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: rlancer/github-actions-test:latest,rlancer/github-actions-test:${{steps.generate-docker-tag.outputs.result}}
+          tags: ${{ secrets.DOCKER_USERNAME }}/github-actions-test:latest,${{ secrets.DOCKER_USERNAME }}/github-actions-test:${{steps.generate-docker-tag.outputs.result}}
 
 
   run-on-docker:
