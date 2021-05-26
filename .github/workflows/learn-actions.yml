@@ -42,11 +42,11 @@ jobs:
           tags: ${{steps.generate-docker-tag-test.outputs.result}}
 
 
-#  run-on-docker:
-#    needs: [docker]
-#    runs-on: ubuntu-latest
-#    container: rlancer/github-actions-test:latest
-#    steps:
-#      - name: Run Python
-#        run: python --version
+  run-on-docker:
+    needs: [docker]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Python
+        run: echo ${{steps.generate-docker-tag-test.outputs.result[0]}}
 
