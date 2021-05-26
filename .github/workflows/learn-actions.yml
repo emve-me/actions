@@ -22,8 +22,7 @@ jobs:
           script: |
             const tagBase = `${process.env['DOCKER_USERNAME']}/${context.repo.repo}`
             const tags =  [`${tagBase}:${context.sha.substring(0, 7)}`, `${tagBase}:latest`]
-            return tags.join(',')
-          result-encoding: string
+            return {tags: tags.join(','), latest:tags[0]}
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
@@ -39,14 +38,14 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{steps.generate-docker-tag-test.outputs.result}}
+          tags: ${{steps.generate-docker-tag-test.outputs.result.tags}}
 
 
   run-on-docker:
-    needs: [docker]
+    needs: [ docker ]
     runs-on: ubuntu-latest
 
     steps:
       - name: Run Python
-        run: echo ${{steps.generate-docker-tag-test.outputs.result[0]}}
+        run: echo ${{steps.generate-docker-tag-test.outputs.latest}}
 
