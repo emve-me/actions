@@ -19,11 +19,11 @@ jobs:
         id: generate-docker-tag-test
         uses: actions/github-script@v4
         with:
-          script: console.log(`${process.env['DOCKER_USERNAME']}-${context.sha.substring(0, 7)}-${context.repo.repo}`)
+          script: |
+            const tagBase = `${process.env['DOCKER_USERNAME']}/${context.repo.repo}`
+            return [`${tagBase}:${context.sha.substring(0, 7)`, `${tagBase}:latest`]
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-
-
 
       - name: Generate Docker Tag
         id: generate-docker-tag
@@ -37,14 +37,14 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/github-actions-test:latest,${{ secrets.DOCKER_USERNAME }}/github-actions-test:${{steps.generate-docker-tag.outputs.result}}
+          tags: steps.generate-docker-tag-test.outputs.result
 
 
-  run-on-docker:
-    needs: [docker]
-    runs-on: ubuntu-latest
-    container: rlancer/github-actions-test:latest
-    steps:
-      - name: Run Python
-        run: python --version
+#  run-on-docker:
+#    needs: [docker]
+#    runs-on: ubuntu-latest
+#    container: rlancer/github-actions-test:latest
+#    steps:
+#      - name: Run Python
+#        run: python --version
 
