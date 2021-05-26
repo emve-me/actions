@@ -19,7 +19,7 @@ jobs:
         id: generate-docker-tag-test
         uses: actions/github-script@v4
         with:
-          script: console.log(`${process.env['DOCKER_USERNAME']}-${context.sha.substring(0, 7)}-{context.repo.repo}`)
+          script: console.log(`${process.env['DOCKER_USERNAME']}-${context.sha.substring(0, 7)}-${context.repo.repo}`)
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
