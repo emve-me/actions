@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: steps.generate-docker-tag-test.outputs.result
+          tags: ${{steps.generate-docker-tag-test.outputs.result}}
 
 
 #  run-on-docker:
