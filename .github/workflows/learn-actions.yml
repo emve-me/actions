@@ -37,6 +37,12 @@ jobs:
       - name: Generate Docker Tag
         run: echo ${{ steps.generate-docker-tag-test.outputs.result }}
 
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: docker-tag
+          path: tag.json
+
 #      - name: Build and push
 #        id: docker_build
 #        uses: docker/build-push-action@v2
