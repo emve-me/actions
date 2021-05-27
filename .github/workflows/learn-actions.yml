@@ -33,8 +33,7 @@ jobs:
       - name: Generate Docker Tag
         run: echo ${{ steps.generate-docker-tag-test.outputs.result }}
     outputs:
-      SELECTED_COLOR:
-        description: "The color!!!"
+      SELECTED_COLOR
 #      - name: Build and push
 #        id: docker_build
 #        uses: docker/build-push-action@v2
