@@ -43,5 +43,5 @@ jobs:
 
     steps:
       - name: Run Python
-        run: echo ${{ fromJSON(needs.docker.generate-docker-tag-test.outputs.result ).latest }}
+        run: echo ${{ needs.docker.generate-docker-tag-test.outputs.result  }}
 
