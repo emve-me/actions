@@ -27,7 +27,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
       - name: Generate Docker Tag
-        run: echo ${{ steps.generate-docker-tag-test.outputs.results }}
+        run: echo ${{ steps.generate-docker-tag-test.outputs.result }}
 
       - name: Build and push
         id: docker_build
