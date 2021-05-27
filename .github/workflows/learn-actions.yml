@@ -43,5 +43,5 @@ jobs:
 
     steps:
       - name: Run Python
-        run: echo ${{ needs.docker.steps.generate-docker-tag-test.outputs.result  }}
-
+        run: echo ${{ needs.docker }}
+# .steps.generate-docker-tag-test.outputs.result
