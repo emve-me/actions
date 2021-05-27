@@ -29,7 +29,7 @@ jobs:
       - name: Generate Docker Tag
         run: echo ${{ steps.generate-docker-tag-test.outputs.result }}
       - name: Generate Docker Tag 11
-        run: echo ${{ steps.generate-docker-tag-test.outputs.result.tags }}
+        run: echo ${{ fromJSON(steps.generate-docker-tag-test.outputs.result).tags }}
 
       - name: Build and push
         id: docker_build
