@@ -22,6 +22,7 @@ jobs:
           script: |
             const tagBase = `${process.env['DOCKER_USERNAME']}/${context.repo.repo}`
             const tags =  [`${tagBase}:${context.sha.substring(0, 7)}`, `${tagBase}:latest`]
+            core.setOutput('SELECTED_COLOR', 'green');
             return {tags: tags.join(','), latest:tags[0]}
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
