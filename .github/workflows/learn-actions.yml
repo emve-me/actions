@@ -21,19 +21,22 @@ jobs:
         with:
           script: |
             const tagBase = `${process.env['DOCKER_USERNAME']}/${context.repo.repo}`
-
             const tags =  [`${tagBase}:${context.sha.substring(0, 7)}`, `${tagBase}:latest`]
-            core.info('Hell!')
-            core.setOutput('SELECTED_COLOR', 'green');
-            return {tags: tags.join(','), latest:tags[0]}
-
+            const r = {tags: tags.join(','), latest:tags[0]}
+            const fs = require('fs')
+            fs.writeFile('tag.json', r, err => {
+              if (err) {
+                core.error(err)
+                return
+              }
+            })
+            return r
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
       - name: Generate Docker Tag
         run: echo ${{ steps.generate-docker-tag-test.outputs.result }}
-    outputs:
-      SELECTED_COLOR
+
 #      - name: Build and push
 #        id: docker_build
 #        uses: docker/build-push-action@v2
