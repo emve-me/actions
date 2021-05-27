@@ -29,12 +29,12 @@ jobs:
       - name: Generate Docker Tag
         run: echo ${{ steps.generate-docker-tag-test.outputs.result }}
 
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: ${{ fromJSON(steps.generate-docker-tag-test.outputs.result).tags }}
+#      - name: Build and push
+#        id: docker_build
+#        uses: docker/build-push-action@v2
+#        with:
+#          push: true
+#          tags: ${{ fromJSON(steps.generate-docker-tag-test.outputs.result).tags }}
 
 
   run-on-docker:
@@ -43,5 +43,5 @@ jobs:
 
     steps:
       - name: Run Python
-        run: echo ${{ fromJSON(needs.docker.generate-docker-tag-test.outputs).latest }}
+        run: echo ${{ fromJSON(needs.docker.generate-docker-tag-test.outputs.result ).latest }}
 
