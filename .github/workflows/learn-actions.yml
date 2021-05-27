@@ -26,12 +26,15 @@ jobs:
             core.info('Hell!')
             core.setOutput('SELECTED_COLOR', 'green');
             return {tags: tags.join(','), latest:tags[0]}
+
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
       - name: Generate Docker Tag
         run: echo ${{ steps.generate-docker-tag-test.outputs.result }}
-
+    outputs:
+      SELECTED_COLOR:
+        description: "The color!!!"
 #      - name: Build and push
 #        id: docker_build
 #        uses: docker/build-push-action@v2
