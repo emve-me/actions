@@ -1,3 +1,4 @@
-FROM python:3.8
+FROM jupyter/scipy-notebook
 
-RUN echo hello
+RUN conda install --quiet --yes \
+    papermill
