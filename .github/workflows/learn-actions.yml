@@ -5,10 +5,10 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: test2
+        run: echo ${{ github.workspace }}
       - name: test
         run: ls /home
-      - name: test2
-        run: echo ${{ github.workspace }
 #      - name: Build
 #        id: docker_build
 #        uses: docker/build-push-action@v2
