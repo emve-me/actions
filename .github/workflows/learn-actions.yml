@@ -9,7 +9,9 @@ jobs:
         run: echo ${{ github.workspace }}
       - name: test
         uses: docker/build-push-action@v2
-        run: ls /home/runner/work
+        with:
+          options: -v ${{ github.workspace }}:/work
+          run: ls /home/runner/work
 #      - name: Build
 #        id: docker_build
 #        uses: docker/build-push-action@v2
