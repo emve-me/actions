@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: echo ${{ github.workspace }}
+        run: ls ${{ github.workspace }}
       - name: Build
         id: docker_build
         uses: docker/build-push-action@v2
