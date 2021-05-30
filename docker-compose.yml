@@ -1,0 +1,9 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./notebooks:/home/jovyan/notebooks
+    ports:
+      - 8888:8888
