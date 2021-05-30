@@ -11,9 +11,11 @@ jobs:
         with:
           push: false
           tags: image-to-run:latest
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Run
         uses: addnab/docker-run-action@v3
         with:
-          options: -v ${{ github.workspace }}:/notwork
+          options: -v ${{ github.workspace }}:/work
           image: image-to-run:latest
-          run: find /notwork
+          run: find /work
