@@ -20,3 +20,4 @@ jobs:
             ls
             pwd
             find .
+            cat work/semicolon_delimited_script
