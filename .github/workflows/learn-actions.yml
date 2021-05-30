@@ -16,6 +16,6 @@ jobs:
       - name: Run
         uses: addnab/docker-run-action@v3
         with:
-          options: -v ${{ github.workspace }}:/work
+          options: -v ${{ github.workspace }}:/home/jovyan/app
           image: image-to-run:latest
-          run: find /work
+          run: papermill --cwd app/notebooks app/notebooks/HuggingFace.ipynb app/notebooks/HuggingFaceOut.ipynb
