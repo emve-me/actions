@@ -14,9 +14,9 @@ jobs:
       - name: Run
         uses: addnab/docker-run-action@v3
         with:
-          options: -v ${{ github.workspace }}:/work
+          options: -v ${{ github.workspace }}:/home/jovyan/work
           image: image-to-run:latest
           run: |
             ls
             pwd
-            ls /work
+            find .
