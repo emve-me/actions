@@ -16,4 +16,4 @@ jobs:
         with:
           options: -v ${{ github.workspace }}:/work
           image: image-to-run:latest
-          run: papermill --version
+          run: ls
