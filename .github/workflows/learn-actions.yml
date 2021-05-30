@@ -18,5 +18,5 @@ jobs:
         with:
           options: -v ${{ github.workspace }}:/home/jovyan
           image: image-to-run:latest
-          run: papermill --cwd notebooks notebooks/HuggingFace.ipynb notebooks/HuggingFaceOut.ipynb
-
+#          run: papermill --cwd notebooks notebooks/HuggingFace.ipynb notebooks/HuggingFaceOut.ipynb
+          run: touch hello.txt
