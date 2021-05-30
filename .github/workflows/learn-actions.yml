@@ -16,4 +16,4 @@ jobs:
         with:
           options: -v ${{ github.workspace }}:/notwork
           image: image-to-run:latest
-          run: find /notework
+          run: find /notwork
