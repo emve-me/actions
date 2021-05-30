@@ -16,4 +16,7 @@ jobs:
         with:
           options: -v ${{ github.workspace }}:/work
           image: image-to-run:latest
-          run: ls work/
+          run: |
+            ls
+            pwd
+            ls /work
