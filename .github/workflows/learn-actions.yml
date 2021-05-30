@@ -16,8 +16,4 @@ jobs:
         with:
           options: -v ${{ github.workspace }}:/home/jovyan/work
           image: image-to-run:latest
-          run: |
-            ls
-            pwd
-            find .
-            cat work/semicolon_delimited_script
+          run: find .
